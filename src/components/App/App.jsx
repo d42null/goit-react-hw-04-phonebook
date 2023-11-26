@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { ContactsTitle, Container, Title } from './App.styled';
 import { ContactForm } from 'components/ContactForm/ContacForm';
 import { nanoid } from 'nanoid';
@@ -17,12 +17,7 @@ export const App = () => {
       ]
   );
   const [filter, setFilter] = useState('');
-  const didMount = useRef(false);
   useEffect(() => {
-    if (!didMount.current) {
-      didMount.current = true;
-      return;
-    }
     localStorage.setItem(LS_KEY, JSON.stringify(contacts));
   }, [contacts]);
   const onSubmit = (name, number) => {
